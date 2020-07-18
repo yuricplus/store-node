@@ -18,6 +18,7 @@ routes.post('/login-store', loginStore.index);
 routes.get('/get-list-store', getStore.index);
 routes.delete('/delete-store', deleteStore.delete);
 
+routes.post('/create-product', createProduct.create)
 routes.get('/get-products', getProducts.index);
 
 
