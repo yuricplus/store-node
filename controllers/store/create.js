@@ -9,12 +9,9 @@ const create = async function(request, response){
 
     const emailDb = await connection('store_db').select("*").where("email", email);
 
-    console.log(emailDb)
 
     if(emailDb.length > 0){
         let error = "Já existe uma loja cadastrado com esse email"
-
-        console.log(error)
 
         return response.json({error});
     };
@@ -38,17 +35,18 @@ const create = async function(request, response){
      city,
      uf
     })
-   
-    const store = await connection('store_db').select("*");
-    const text = "Conta Criada com sucesso!"
-    const subject = "OBA";
-    const html = "<h1>Cadastro realizado com sucesso</h1><br><h4>Seja bem vindo a nossa plataforma</h4>"
-
-    console.log(request.email)
-
     
-    sendEmail(email, text, subject, html);
+    emailConfig(name, email)
     return response.json({id})
- }
+}
+
+const emailConfig = (name, email) => {
+   const text = `Seja bem vindo ${name}`;
+   const subject = "Sua conta foi criada com sucesso!";
+
+   const html = `<div style="text-align:center;"><h1>Bem vindo ${name}</h1><p>Pronto para anunciar sua loja?</p><span>Clique <a>aqui</a> para adicionar o seu primeiro produto a nossa loja.</span></div>`
+
+   sendEmail(email, text, subject, html);
+}
 
 module.exports = {create}

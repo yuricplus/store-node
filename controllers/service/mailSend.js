@@ -10,8 +10,8 @@ async function main(destiny, text, subject, html){
          port: 587,
          secure: false,
          auth: {
-             user: 'gaylord.hilpert31@ethereal.email',
-             pass: 'HSh3qzAMgE24bKFhv4',
+             user: 'catherine.labadie3@ethereal.email',
+             pass: '4x57TrTRKRFfbKeBY9',
          }
      });
 
